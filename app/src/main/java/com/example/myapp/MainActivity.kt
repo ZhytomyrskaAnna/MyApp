@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -16,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.myapp.ui.theme.MyAppTheme
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,18 +38,35 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Surface (color=Color.Cyan) {
+    Surface (color=MaterialTheme.colorScheme.background) {
         Text(
             text = "Hi, my name is $name!",
-            modifier = modifier.padding(24.dp)
+            modifier = modifier.fillMaxSize()
+
         )
     }
 }
 
-@Preview(showBackground = true)
+@Composable
+fun GreetingText(message: String, modifier: Modifier = Modifier){
+    Text(
+        text = message,
+        fontSize = 120.sp,
+        lineHeight = 116.sp
+    )
+}
+
+
+
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+    )
 @Composable
 fun GreetingPreview() {
     MyAppTheme {
         Greeting("Anna")
+        GreetingText(message = "Happy Birthday Sam!")
     }
 }
